@@ -12,6 +12,7 @@ script:
   - docker login  -u rajhans953 -p rajhans.yadav
   - docker tag jasper rajhans953/jasper:latest
   - docker push rajhans953/jasper:latest
+  
 #  - pwd
 #  - ls
 #  - ls  /home/travis/build/rajhans995533/security/

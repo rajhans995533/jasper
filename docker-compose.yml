@@ -33,7 +33,7 @@ services:
 
 networks:
   default:
-
+  
 volumes:
   pgvol:
   jasper_webapp:
