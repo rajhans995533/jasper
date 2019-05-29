@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  jasperserver:
+    image: rajhans953/jasper:latest
+    ports:
+      - "7070:8080"
+      #- "8443:8443"
+    depends_on:
+      - pg
+    env_file: .env
+    environment:
+      - DB_HOST=192.168.99.100
+    volumes:
+      - jasper_webapp:/usr/local/tomcat/webapps/jasperserver
+      - jasper_license:/usr/local/share/jasperreports-ce/license
+      - jasper_customization:/usr/local/share/jasperreports-ce/customization
+    networks:
+      - default
+
+  pg:
+    image: postgres:9.5
+    ports:
+      - "5432:5432"   # PostgreSQL
+    environment:
+      - LANG=en_US.UTF-8
+      - PGDATABASE=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - pgvol:/var/lib/postgresql/data
+    networks:
+      - default
+
+networks:
+  default:
+
+volumes:
+  pgvol:
+  jasper_webapp:
+  jasper_license:
+  jasper_customization:

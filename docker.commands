@@ -1,0 +1,11 @@
+# Build a new Docker image and store it in local Docker
+docker build -t jasper-reports .
+
+# Tag the local Docker image with the Docker Hub username/repo:version
+docker tag jasper-reports groundworkdevelopment/jasper-reports:1.0
+
+# Push new Docker image to Docker Hi
+docker push groundworkdevelopment/jasper-reports:1.0
+
+# Deploy local services based on new Docker image and defined compose file
+docker stack deploy -c docker-compose.yml jasper-reports
